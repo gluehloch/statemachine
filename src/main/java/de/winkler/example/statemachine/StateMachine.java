@@ -35,7 +35,24 @@ public class StateMachine {
     private List<Event> resetEvents = new ArrayList<Event>();
 
     public void addResetEvents(Event... events) {
-      for (Event e : events) resetEvents.add(e);
+        for (Event e : events)
+            resetEvents.add(e);
+    }
+
+    public boolean isResetEvent(String eventCode) {
+        return resetEventCodes().contains(eventCode);
+    }
+
+    private List<String> resetEventCodes() {
+        List<String> result = new ArrayList<String>();
+        for (Event e : resetEvents)
+            result.add(e.getCode());
+        return result;
+    }
+
+    public State getStart() {
+        // TODO Auto-generated method stub
+        return null;
     }
 
 }
