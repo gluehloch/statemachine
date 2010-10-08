@@ -12,6 +12,10 @@ public class State {
     private List<Command> actions = new ArrayList<Command>();
     private Map<String, Transition> transitions = new HashMap<String, Transition>();
 
+    public State(String _name) {
+        name = _name;
+    }
+
     public void addTransition(Event event, State targetState) {
         transitions.put(event.getCode(), new Transition(this, event,
             targetState));
@@ -37,4 +41,7 @@ public class State {
             commandsChannel.send(c.getCode());
     }
 
+    public void addAction(Command command) {
+        actions.add(command);
+    }
 }
